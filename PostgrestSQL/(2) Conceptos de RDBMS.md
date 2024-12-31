@@ -5,10 +5,10 @@ Los sistemas de gestión de bases de datos relacionales (RDBMS) son un tipo de s
 ---
 ## Indice
 
-[1. Modelo de objetos en PostgreSQL](#1-modelo-de-objetos-en-postgresql)
-[1.1 Consultas en PostgreSQL](#11-consultas-en-postgresql)
-[1.1.1 Consulta de una tabla](#111-consulta-de-una-tabla)
-[1.1.2 Tipos de datos en PostgreSQL](#112-tipos-de-datos-en-postgresql)
+1. [Modelo de objetos en PostgreSQL](#1-modelo-de-objetos-en-postgresql)
+1.1 [Consultas en PostgreSQL](#11-consultas-en-postgresql)
+1.1.1 [Consulta de una tabla](#111-consulta-de-una-tabla)
+1.1.2 [Tipos de datos en PostgreSQL](#112-tipos-de-datos-en-postgresql)
 
 ---
 
