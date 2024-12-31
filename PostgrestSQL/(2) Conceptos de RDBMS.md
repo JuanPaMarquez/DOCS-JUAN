@@ -170,5 +170,6 @@ PostgreSQL ofrece un conjunto rico y diverso de tipos de datos, que se adaptan a
 
 > **Compatibilidad**: SQL especifica los siguientes tipos (o su ortografía): bigint, bit, bit variable, boolean, char, character variable, character, varchar, date, double precision, integer, interval, numeric, decimal, real, smallint, time (with or without time zone), timestamp (with or without time zone), xml.
 
+Each data type has an external representation determined by its input and output functions. Many of the built-in types have obvious external formats. However, several types are either unique to PostgreSQL, such as geometric paths, or have several possible formats, such as the date and time types. Some of the input and output functions are not invertible, i.e., the result of an output function might lose accuracy when compared to the original input.
 
 
