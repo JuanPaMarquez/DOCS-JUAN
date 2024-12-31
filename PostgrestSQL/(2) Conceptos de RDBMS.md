@@ -6,9 +6,9 @@ Los sistemas de gestión de bases de datos relacionales (RDBMS) son un tipo de s
 ## Indice
 
 1. [Modelo de objetos en PostgreSQL](#1-modelo-de-objetos-en-postgresql)
-1.1 [Consultas en PostgreSQL](#11-consultas-en-postgresql)
-1.1.1 [Consulta de una tabla](#111-consulta-de-una-tabla)
-1.1.2 [Tipos de datos en PostgreSQL](#112-tipos-de-datos-en-postgresql)
+    1. [Consultas en PostgreSQL](#11-consultas-en-postgresql)
+        1. [Consulta de una tabla](#111-consulta-de-una-tabla)
+        2. [Tipos de datos en PostgreSQL](#112-tipos-de-datos-en-postgresql)
 
 ---
 
@@ -24,11 +24,15 @@ Las consultas son la forma principal de interactuar con una base de datos Postgr
 
 Para recuperar datos de una tabla, se consulta la tabla. Para ello se utiliza una sentencia SQL SELECT. La sentencia se divide en una lista de selección (la parte que enumera las columnas que deben devolverse), una lista de tablas (la parte que enumera las tablas de las que deben recuperarse los datos) y una cualificación opcional (la parte que especifica cualquier restricción). Por ejemplo, para recuperar todas las filas de la tabla **weather**, escriba:
 
-> **`SELECT * FROM weather;`**
+```
+SELECT * FROM weather;
+```
 
 Aquí __*__ es una abreviatura de __«todas las columnas»__. Así que el mismo resultado se tendría con:
 
-> **`SELECT city, temp_lo, temp_hi, prcp, date FROM weather;`**
+```
+SELECT city, temp_lo, temp_hi, prcp, date FROM weather;
+```
 
 La salida debería ser:
 
@@ -42,7 +46,9 @@ __(3 rows)__
 
 Puede escribir expresiones, no sólo simples referencias a columnas, en la lista de selección. Por ejemplo, puede hacer
 
-> **`SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;`**
+```
+SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;
+```
 
 Esto debería dar:
 
@@ -58,8 +64,10 @@ Observe cómo se utiliza la cláusula AS para reetiquetar la columna de salida. 
 
 Una consulta puede «calificarse» añadiendo una cláusula WHERE que especifique qué filas se desean obtener. La cláusula WHERE contiene una expresión booleana (valor de verdad), y sólo se devuelven las filas para las que la expresión booleana es verdadera. Los operadores booleanos habituales (AND, OR y NOT) están permitidos en la calificación. Por ejemplo, lo siguiente recupera el tiempo de San Francisco en días lluviosos:
 
-> `SELECT * FROM weather`
-> **`WHERE city = 'San Francisco' AND prcp > 0.0;`**
+```
+SELECT * FROM weather`
+WHERE city = 'San Francisco' AND prcp > 0.0;
+```
 
 resultado:
 
@@ -71,7 +79,9 @@ __(1 row)__
 
 Puede solicitar que los resultados de una consulta se devuelvan ordenados:
 
-> **`SELECT * FROM weather ORDER BY city;`**
+```
+SELECT * FROM weather ORDER BY city;
+```
 
  city          | temp_lo | temp_hi | prcp |    date
 ---------------|---------|---------|------|------------
@@ -81,11 +91,15 @@ Puede solicitar que los resultados de una consulta se devuelvan ordenados:
 
 En este ejemplo, el orden de clasificación no está totalmente especificado, por lo que podría obtener las filas de San Francisco en cualquier orden. Pero si lo hace, siempre obtendrá los resultados que se muestran arriba:
 
-> **`SELECT * FROM weather ORDER BY city, temp_lo;`**
+```
+SELECT * FROM weather ORDER BY city, temp_lo;
+```
 
 Puede solicitar que se eliminen las filas duplicadas del resultado de una consulta:
 
-> **`SELECT DISTINCT city FROM weather;`**
+```
+SELECT DISTINCT city FROM weather;
+```
 
  city          |
 ---------------|
@@ -96,7 +110,9 @@ __(2 rows)__
 
 También en este caso, el orden de las filas puede variar. Puede asegurar resultados consistentes usando DISTINCT y ORDER BY juntos:
 
-> **`SELECT DISTINCT city FROM weather ORDER BY city;`**
+```
+SELECT DISTINCT city FROM weather ORDER BY city;
+```
 
 Aunque __SELECT *__ es útil para consultas improvisadas, en general se considera de mal estilo en código de producción, ya que añadir una columna a la tabla cambiaría los resultados.
 
